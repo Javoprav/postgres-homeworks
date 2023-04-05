@@ -14,10 +14,6 @@ if __name__ == '__main__':
     employees_data = os.path.join('north_data', 'employees_data.csv')
     orders_data = os.path.join('north_data', 'orders_data.csv')
     try:
-        # sql = "COPY %s FROM STDIN WITH CSV HEADER DELIMITER AS ','"
-        # e = open('north_data/employees_data.csv', 'r', encoding='utf8')
-        # cur.execute("truncate " + 'employees' + ";")
-        # cur.copy_expert(sql=sql % 'employees', file=e)
         f = open(employees_data, 'r', encoding='utf8')
         cur.copy_from(f, 'employees', sep=',')
         f.close()
