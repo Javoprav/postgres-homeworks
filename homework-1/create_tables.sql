@@ -3,7 +3,7 @@ create table employees
 (first_name varchar(100),
 last_name varchar(100),
 title varchar(100),
-birth_date char(10),
+birth_date char(100),
 notes text);
 
 create table customers
