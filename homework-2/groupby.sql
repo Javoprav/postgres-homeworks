@@ -9,7 +9,7 @@ FROM orders
 WHERE ship_country LIKE 'P%'
 ORDER BY freight DESC LIMIT 10;
 -- 3. фамилию и телефон сотрудников, у которых в данных отсутствует регион (см таблицу employees)
-SELECT *
+SELECT last_name, home_phone
 FROM employees
 WHERE region IS NULL;
 -- 4. количество поставщиков (suppliers) в каждой из стран. Результат отсортировать по убыванию количества поставщиков в стране
@@ -26,13 +26,13 @@ HAVING SUM(freight) > 2750
 ORDER BY SUM(freight) DESC;
 -- 6. страны, в которых зарегистрированы и заказчики (customers) и поставщики (suppliers) и работники (employees).
 SELECT country FROM customers
-UNION
+INTERSECT
 SELECT country FROM suppliers
-UNION
+INTERSECT
 SELECT country FROM employees;
 -- 7. страны, в которых зарегистрированы и заказчики (customers) и поставщики (suppliers), но не зарегистрированы работники (employees).
 SELECT country FROM customers
-UNION
+INTERSECT
 SELECT country FROM suppliers
 EXCEPT
 SELECT country FROM employees;

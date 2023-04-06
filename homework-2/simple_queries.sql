@@ -6,7 +6,7 @@ FROM customers;
 SELECT order_id, (shipped_date - order_date) as diff
 FROM orders;
 -- 3. все города без повторов, в которых зарегистрированы заказчики (customers)
-SELECT city DESC
+SELECT city DISTINCT
 FROM customers;
 -- 4. количество заказов (таблица orders)
 SELECT COUNT(*)
